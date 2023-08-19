@@ -1,4 +1,4 @@
-use rust::days::{one::cals, three::{ruck, part2}, two::ro};
+use rust::days::{one::cals, three::{ruck, ruck_part_2}, two::ro};
 
 fn main() {
     if let Err(error) = cals() {
@@ -10,7 +10,7 @@ fn main() {
     if let Err(error) = ruck() {
         eprintln!("Error: {}", error);
     }
-    if let Err(error) = part2() {
+    if let Err(error) = ruck_part_2() {
         eprintln!("Error: {}", error);
     }
 }

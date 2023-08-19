@@ -5,27 +5,23 @@ use crate::days::one::open_sesame;
 
 
 pub fn ruck() -> Result<(), Box<dyn std::error::Error>> {
-    let reader = open_sesame("day_3_input");
+    let input = open_sesame("day_3_input");
 
     let mut alphabet_map: HashMap<String, usize> = HashMap::new();
-
     let alphabet = String::from("abcdefghijklmnopqrstuvwxyz");
-    let upper = String::from("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
-    let mut position = 0;
+    let mut pos = 0;
+    let mut upper = 26;
     for letter in alphabet.chars() {
-        position += 1;
-        alphabet_map.insert(letter.to_string(), position);
-    }
-
-    for letter in upper.chars() {
-        position += 1;
-        alphabet_map.insert(letter.to_string(), position);
+        pos += 1;
+        upper += 1;
+        alphabet_map.insert(letter.to_string(), pos);
+        alphabet_map.insert(letter.to_uppercase().to_string(), upper);
     }
 
     let mut result: usize = 0;
 
-    for i in reader?.lines() {
+    for i in input?.lines() {
         let i = i.unwrap();
 
         let l = find(i.to_string());
@@ -60,7 +56,7 @@ fn find(input: String) -> String {
     s
 }
 
-pub fn part2() -> Result<(), Box<dyn std::error::Error>> {
+pub fn ruck_part_2() -> Result<(), Box<dyn std::error::Error>> {
     let input = open_sesame("day_3_input");
     let mut alphabet_map: HashMap<String, usize> = HashMap::new();
 
